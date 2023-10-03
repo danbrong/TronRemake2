@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerMove2 : MonoBehaviour
 {
     // Movement Keys
     public KeyCode W;

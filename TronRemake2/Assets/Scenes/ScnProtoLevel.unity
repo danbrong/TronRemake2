@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 527540530}
   - component: {fileID: 527540529}
   - component: {fileID: 527540533}
-  - component: {fileID: 527540532}
+  - component: {fileID: 527540534}
   m_Layer: 0
   m_Name: PlayerBody
   m_TagString: Player
@@ -693,27 +693,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527540527}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &527540532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527540527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5a2eedc07c8e0c4c9c51d34f418ea06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  W: 119
-  A: 97
-  S: 115
-  D: 100
-  speed: 50
-  xMoveInitial: 0
-  yMoveInitial: 1
-  xMoveCurrent: 0
-  yMoveCurrent: 0
 --- !u!54 &527540533
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -730,6 +709,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &527540534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527540527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d504c97e8345f4343960f5d77bce2fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  W: 119
+  A: 97
+  S: 115
+  D: 100
+  speed: 50
+  xMove: 0
+  yMove: 1
 --- !u!1 &624353215
 GameObject:
   m_ObjectHideFlags: 0
