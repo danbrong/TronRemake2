@@ -9,7 +9,8 @@ public class PlayerMove : MonoBehaviour
     public KeyCode D;
 
     // General Variables
-    public float speed;
+    public float initialSpeed;
+    private float speed;
     public float xMove = 0;
     public float yMove = 1;
     Rigidbody pbody;
@@ -32,6 +33,7 @@ public class PlayerMove : MonoBehaviour
         pbody = GetComponent<Rigidbody>();
 
         // Initial Player Movement
+        speed = initialSpeed;
         pbody.velocity = new Vector3(xMove, yMove, 0) * speed;
     }
 
@@ -56,19 +58,19 @@ public class PlayerMove : MonoBehaviour
             {
                 xMove = 0;
                 yMove = 1;
-                speed = 100;
+                speed = initialSpeed * 2;
             }
             else if (downReverse == false)
             {
                 xMove = 0;
                 yMove = -1;
-                speed = 25;
+                speed = initialSpeed / 2;
             }
             else
             {
                 xMove = 0;
                 yMove = 1;
-                speed = 50;
+                speed = initialSpeed;
                 upReverse = false;
                 downReverse = true;
                 leftReverse = true;
@@ -82,19 +84,19 @@ public class PlayerMove : MonoBehaviour
             {
                 xMove = 0;
                 yMove = -1;
-                speed = 100;
+                speed = initialSpeed * 2;
             }
             else if (upReverse == false)
             {
                 xMove = 0;
                 yMove = 1;
-                speed = 25;
+                speed = initialSpeed / 2;
             }
             else
             {
                 xMove = 0;
                 yMove = -1;
-                speed = 50;
+                speed = initialSpeed;
                 upReverse = true;
                 downReverse = false;
                 leftReverse = true;
@@ -109,19 +111,19 @@ public class PlayerMove : MonoBehaviour
             {
                 xMove = -1;
                 yMove = 0;
-                speed = 100;
+                speed = initialSpeed * 2;
             }
             else if (rightReverse == false)
             {
                 xMove = 1;
                 yMove = 0;
-                speed = 25;
+                speed = initialSpeed / 2;
             }
             else
             {
                 xMove = -1;
                 yMove = 0;
-                speed = 50;
+                speed = initialSpeed;
                 upReverse = true;
                 downReverse = true;
                 leftReverse = false;
@@ -136,19 +138,19 @@ public class PlayerMove : MonoBehaviour
             {
                 xMove = 1;
                 yMove = 0;
-                speed = 100;
+                speed = initialSpeed * 2;
             }
             else if (leftReverse == false)
             {
                 xMove = -1;
                 yMove = 0;
-                speed = 25;
+                speed = initialSpeed / 2;
             }
             else
             {
                 xMove = 1;
                 yMove = 0;
-                speed = 50;
+                speed = initialSpeed;
                 upReverse = true;
                 downReverse = true;
                 leftReverse = true;
@@ -160,19 +162,19 @@ public class PlayerMove : MonoBehaviour
         // Return to Base speed after control change
         if (Input.GetKeyUp(W))
         {
-            speed = 50;
+            speed = initialSpeed;
         }
         if (Input.GetKeyUp(S))
         {
-            speed = 50;
+            speed = initialSpeed;
         }
         if (Input.GetKeyUp(A))
         {
-            speed = 50;
+            speed = initialSpeed;
         }
         if (Input.GetKeyUp(D))
         {
-            speed = 50;
+            speed = initialSpeed;
         }
         // Final Move and Rotation Value
         pbody.velocity = new Vector3(xMove, yMove, 0) * speed;
