@@ -725,7 +725,7 @@ MonoBehaviour:
   A: 97
   S: 115
   D: 100
-  initialSpeed: 100
+  initialSpeed: 75
   xMove: 0
   yMove: 1
 --- !u!1 &624353215
