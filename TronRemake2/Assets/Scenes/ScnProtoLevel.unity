@@ -359,7 +359,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160781313}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -606,6 +606,7 @@ GameObject:
   - component: {fileID: 527540529}
   - component: {fileID: 527540533}
   - component: {fileID: 527540534}
+  - component: {fileID: 527540535}
   m_Layer: 0
   m_Name: PlayerBody
   m_TagString: Player
@@ -622,7 +623,7 @@ Transform:
   m_GameObject: {fileID: 527540527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.4, y: -115.5, z: -10}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 7.5, y: 7.5, z: 7.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1542551506}
@@ -728,6 +729,19 @@ MonoBehaviour:
   initialSpeed: 75
   xMove: 0
   yMove: 1
+--- !u!114 &527540535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527540527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f06ebb7257c1bd2448e7c535509a9966, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrailWall: {fileID: 1248409881358690409, guid: b11d03095ae52ce4db0f5b3766350d61, type: 3}
 --- !u!1 &624353215
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,7 +784,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624353215}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -2008,7 +2022,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788302746}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -2202,7 +2216,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021707718}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
