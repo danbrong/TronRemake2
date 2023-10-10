@@ -41,6 +41,14 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         Move();
+        
+    }
+
+    // Code to Stop Player Movement on Collision
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+        //speed = 0;
     }
 
     // Player Movement Function
