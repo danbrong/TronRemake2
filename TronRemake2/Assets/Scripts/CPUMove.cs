@@ -24,7 +24,7 @@ public class CPUMove : MonoBehaviour
 
     // Rotation Variables
     private Vector2 direction;
-    private Quaternion rotation = Quaternion.identity;
+    private Quaternion rotation = Quaternion.Euler(0, 0, -180);
     private Vector2 zero = Vector2.zero;
 
     // Start is called before the first frame update
@@ -58,7 +58,6 @@ public class CPUMove : MonoBehaviour
         // Player Rotation
         direction = zero;
         transform.rotation = rotation;
-
 
         // Random Direction choice
         float randomNum = Random.Range(0, 3);
