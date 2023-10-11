@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2371746353663474322}
   - component: {fileID: 4071621525294619989}
   m_Layer: 0
-  m_Name: TrailWall
+  m_Name: CPUTrailWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 828534c12441ea544a9a842a3e9690a3, type: 2}
+  - {fileID: 2100000, guid: 25e2ebd10512f2c4babaa1b801201ef5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
