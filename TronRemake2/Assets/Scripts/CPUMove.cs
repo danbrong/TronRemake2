@@ -49,7 +49,7 @@ public class CPUMove : MonoBehaviour
     // Code to Stop Player Movement on Collision
     private void OnTriggerEnter(Collider other)
     {
-        //Destroy(gameObject);
+        Destroy(gameObject);
         //speed = 0;
     }
 
