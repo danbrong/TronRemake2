@@ -36,6 +36,7 @@ public class CPUMove : MonoBehaviour
         // Initial Player Movement
         speed = initialSpeed;
         cbody.velocity = new Vector3(xMove, yMove, 0) * speed;
+        direction = zero;
     }
 
     // Update is called once per frame
@@ -55,8 +56,7 @@ public class CPUMove : MonoBehaviour
     // Player Movement Function
     void Move()
     {
-        // Player Rotation
-        direction = zero;
+        // CPU Rotation
         transform.rotation = rotation;
 
         // Random Direction choice
@@ -73,6 +73,7 @@ public class CPUMove : MonoBehaviour
                         xMove = -1;
                         yMove = 0;
                         timer = 0;
+                        direction = Vector2.left;
 
                         upReverse = true;
                         downReverse = true;
@@ -84,6 +85,7 @@ public class CPUMove : MonoBehaviour
                         xMove = 1;
                         yMove = 0;
                         timer = 0;
+                        direction = Vector2.right;
 
                         upReverse = true;
                         downReverse = true;
@@ -95,6 +97,7 @@ public class CPUMove : MonoBehaviour
                         xMove = 0;
                         yMove = -1;
                         timer = 0;
+                        direction = Vector2.down;
 
                         upReverse = true;
                         downReverse = false;
@@ -113,6 +116,7 @@ public class CPUMove : MonoBehaviour
                         xMove = 0;
                         yMove = -1;
                         timer = 0;
+                        direction = Vector2.down;
 
                         upReverse = true;
                         downReverse = false;
@@ -124,6 +128,7 @@ public class CPUMove : MonoBehaviour
                         xMove = 0;
                         yMove = 1;
                         timer = 0;
+                        direction = Vector2.up;
 
                         upReverse = false;
                         downReverse = true;
@@ -135,6 +140,7 @@ public class CPUMove : MonoBehaviour
                         xMove = -1;
                         yMove = 0;
                         timer = 0;
+                        direction = Vector2.left;
 
                         upReverse = true;
                         downReverse = true;
@@ -154,6 +160,7 @@ public class CPUMove : MonoBehaviour
                         xMove = 0;
                         yMove = -1;
                         timer = 0;
+                        direction = Vector2.down;
 
                         upReverse = true;
                         downReverse = false;
@@ -165,6 +172,7 @@ public class CPUMove : MonoBehaviour
                         xMove = 0;
                         yMove = 1;
                         timer = 0;
+                        direction = Vector2.up;
 
                         upReverse = false;
                         downReverse = true;
@@ -176,6 +184,7 @@ public class CPUMove : MonoBehaviour
                         xMove = 1;
                         yMove = 0;
                         timer = 0;
+                        direction = Vector2.right;
 
                         upReverse = true;
                         downReverse = true;
@@ -196,6 +205,7 @@ public class CPUMove : MonoBehaviour
                         xMove = 1;
                         yMove = 0;
                         timer = 0;
+                        direction = Vector2.right;
 
                         upReverse = true;
                         downReverse = true;
@@ -207,6 +217,7 @@ public class CPUMove : MonoBehaviour
                         xMove = -1;
                         yMove = 0;
                         timer = 0;
+                        direction = Vector2.left;
 
                         upReverse = true;
                         downReverse = true;
@@ -218,6 +229,7 @@ public class CPUMove : MonoBehaviour
                         xMove = 0;
                         yMove = 1;
                         timer = 0;
+                        direction = Vector2.up;
 
                         upReverse = false;
                         downReverse = true;
