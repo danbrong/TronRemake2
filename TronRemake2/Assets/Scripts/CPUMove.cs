@@ -10,20 +10,23 @@ public class CPUMove : MonoBehaviour
     public float xMove = 0;
     public float yMove = -1;
     Rigidbody cbody;
-
-    public float delay;
-    public float delay2;
-    float timer;
-    float timer2;
-
-    float tiltZ;
+    private float tiltZ;
     bool upReverse = true;
     bool downReverse = false;
     bool leftReverse = true;
     bool rightReverse = true;
 
+    // Secondary Variables
+    public float delay;
+    public float delay2;
+    float timer;
+    float timer2;
+    private Ray ray;
+    private RaycastHit hit;
+    public float rayDistance;
+
     // Rotation Variables
-    private Vector2 direction;
+    private Vector2 directionFace;
     private Quaternion rotation = Quaternion.Euler(0, 0, -180);
     private Vector2 zero = Vector2.zero;
 
@@ -36,12 +39,16 @@ public class CPUMove : MonoBehaviour
         // Initial Player Movement
         speed = initialSpeed;
         cbody.velocity = new Vector3(xMove, yMove, 0) * speed;
-        direction = zero;
+        directionFace = zero;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Raycast Targetting
+        ray = new Ray(transform.position, transform.up);
+        Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
         Move();
 
     }
@@ -58,22 +65,22 @@ public class CPUMove : MonoBehaviour
     {
         // CPU Rotation
         transform.rotation = rotation;
-
-        // Random Direction choice
-        float randomNum = Random.Range(0, 3);
-
         timer += Time.deltaTime;
-        if (timer > delay)
+
+        if (timer > delay2)
         {
+            // Random Direction choice
+            float randomNum2 = Random.Range(0, 3);
+
             if (downReverse == false)
             {
-                switch (randomNum)
+                switch (randomNum2)
                 {
                     case 0:
                         xMove = -1;
                         yMove = 0;
                         timer = 0;
-                        direction = Vector2.left;
+                        directionFace = Vector2.left;
 
                         upReverse = true;
                         downReverse = true;
@@ -85,7 +92,7 @@ public class CPUMove : MonoBehaviour
                         xMove = 1;
                         yMove = 0;
                         timer = 0;
-                        direction = Vector2.right;
+                        directionFace = Vector2.right;
 
                         upReverse = true;
                         downReverse = true;
@@ -97,7 +104,7 @@ public class CPUMove : MonoBehaviour
                         xMove = 0;
                         yMove = -1;
                         timer = 0;
-                        direction = Vector2.down;
+                        directionFace = Vector2.down;
 
                         upReverse = true;
                         downReverse = false;
@@ -110,13 +117,13 @@ public class CPUMove : MonoBehaviour
 
             else if (leftReverse == false)
             {
-                switch (randomNum)
+                switch (randomNum2)
                 {
                     case 0:
                         xMove = 0;
                         yMove = -1;
                         timer = 0;
-                        direction = Vector2.down;
+                        directionFace = Vector2.down;
 
                         upReverse = true;
                         downReverse = false;
@@ -128,7 +135,7 @@ public class CPUMove : MonoBehaviour
                         xMove = 0;
                         yMove = 1;
                         timer = 0;
-                        direction = Vector2.up;
+                        directionFace = Vector2.up;
 
                         upReverse = false;
                         downReverse = true;
@@ -140,7 +147,7 @@ public class CPUMove : MonoBehaviour
                         xMove = -1;
                         yMove = 0;
                         timer = 0;
-                        direction = Vector2.left;
+                        directionFace = Vector2.left;
 
                         upReverse = true;
                         downReverse = true;
@@ -152,15 +159,13 @@ public class CPUMove : MonoBehaviour
 
             else if (rightReverse == false)
             {
-                switch (randomNum)
+                switch (randomNum2)
                 {
-                    
-
                     case 0:
                         xMove = 0;
                         yMove = -1;
                         timer = 0;
-                        direction = Vector2.down;
+                        directionFace = Vector2.down;
 
                         upReverse = true;
                         downReverse = false;
@@ -172,19 +177,19 @@ public class CPUMove : MonoBehaviour
                         xMove = 0;
                         yMove = 1;
                         timer = 0;
-                        direction = Vector2.up;
+                        directionFace = Vector2.up;
 
                         upReverse = false;
                         downReverse = true;
                         leftReverse = true;
                         rightReverse = true;
                         break;
-                    
+
                     case 2:
                         xMove = 1;
                         yMove = 0;
                         timer = 0;
-                        direction = Vector2.right;
+                        directionFace = Vector2.right;
 
                         upReverse = true;
                         downReverse = true;
@@ -197,15 +202,15 @@ public class CPUMove : MonoBehaviour
 
             else if (upReverse == false)
             {
-                switch (randomNum)
+                switch (randomNum2)
                 {
-                    
+
 
                     case 0:
                         xMove = 1;
                         yMove = 0;
                         timer = 0;
-                        direction = Vector2.right;
+                        directionFace = Vector2.right;
 
                         upReverse = true;
                         downReverse = true;
@@ -217,7 +222,7 @@ public class CPUMove : MonoBehaviour
                         xMove = -1;
                         yMove = 0;
                         timer = 0;
-                        direction = Vector2.left;
+                        directionFace = Vector2.left;
 
                         upReverse = true;
                         downReverse = true;
@@ -229,7 +234,7 @@ public class CPUMove : MonoBehaviour
                         xMove = 0;
                         yMove = 1;
                         timer = 0;
-                        direction = Vector2.up;
+                        directionFace = Vector2.up;
 
                         upReverse = false;
                         downReverse = true;
@@ -240,36 +245,143 @@ public class CPUMove : MonoBehaviour
             }
         }
 
-        //// Delay for Direction Change
-        //timer2 += Time.deltaTime;
-        //if (timer2 > delay2)
-        //{
-        //    float randomNum2 = Random.Range(0, 3);
+        // Raycast Movement Response
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (timer > delay)
+            {
+                if (hit.distance < rayDistance)
+                {
+                    // Random Direction choice
+                    float randomNum = Random.Range(0, 2);
 
-        //    // Switch Case Implementation for Direction
-        //    switch (randomNum2)
-        //    {
-        //        case 0:
-        //            timer2 = 0;
-        //            break;
-        //        case 1:
-        //            transform.Rotate(0, 0, 90);
-        //            timer2 = 0;
-        //            break;
-        //        case 2:
-        //            transform.Rotate(0, 0, -90);
-        //            timer2 = 0;
-        //            break;
-        //    }
-        //}
+                    if (downReverse == false)
+                    {
+                        switch (randomNum)
+                        {
+                            case 0:
+                                xMove = -1;
+                                yMove = 0;
+                                timer = 0;
+                                directionFace = Vector2.left;
+
+                                upReverse = true;
+                                downReverse = true;
+                                leftReverse = false;
+                                rightReverse = true;
+                                break;
+
+                            case 1:
+                                xMove = 1;
+                                yMove = 0;
+                                timer = 0;
+                                directionFace = Vector2.right;
+
+                                upReverse = true;
+                                downReverse = true;
+                                leftReverse = true;
+                                rightReverse = false;
+                                break;
+                        }
+                    }
+                    else if (leftReverse == false)
+                    {
+                        switch (randomNum)
+                        {
+                            case 0:
+                                xMove = 0;
+                                yMove = -1;
+                                timer = 0;
+                                directionFace = Vector2.down;
+
+                                upReverse = true;
+                                downReverse = false;
+                                leftReverse = true;
+                                rightReverse = true;
+                                break;
+
+                            case 1:
+                                xMove = 0;
+                                yMove = 1;
+                                timer = 0;
+                                directionFace = Vector2.up;
+
+                                upReverse = false;
+                                downReverse = true;
+                                leftReverse = true;
+                                rightReverse = true;
+                                break;
+                        }
+                    }
+                    else if (rightReverse == false)
+                    {
+                        switch (randomNum)
+                        {
+                            case 0:
+                                xMove = 0;
+                                yMove = -1;
+                                timer = 0;
+                                directionFace = Vector2.down;
+
+                                upReverse = true;
+                                downReverse = false;
+                                leftReverse = true;
+                                rightReverse = true;
+                                break;
+
+                            case 1:
+                                xMove = 0;
+                                yMove = 1;
+                                timer = 0;
+                                directionFace = Vector2.up;
+
+                                upReverse = false;
+                                downReverse = true;
+                                leftReverse = true;
+                                rightReverse = true;
+                                break;
+                        }
+                    }
+                    else if (upReverse == false)
+                    {
+                        switch (randomNum)
+                        {
+                            case 0:
+                                xMove = 1;
+                                yMove = 0;
+                                timer = 0;
+                                directionFace = Vector2.right;
+
+                                upReverse = true;
+                                downReverse = true;
+                                leftReverse = true;
+                                rightReverse = false;
+                                break;
+
+                            case 1:
+                                xMove = -1;
+                                yMove = 0;
+                                timer = 0;
+                                directionFace = Vector2.left;
+
+                                upReverse = true;
+                                downReverse = true;
+                                leftReverse = false;
+                                rightReverse = true;
+                                break;
+                        }
+                    }
+                }
+            }
+        }
 
         // Final Move and Rotation Value
         cbody.velocity = new Vector3(xMove, yMove, 0) * speed;
 
         //So we remain in the last rotation set when player releases keys rather than flipping back to default.
-        if (direction != zero)
+        if (directionFace != zero)
         {
-            rotation = Quaternion.LookRotation(Vector3.forward, direction);
+            rotation = Quaternion.LookRotation(Vector3.forward, directionFace);
         }
     }
 }

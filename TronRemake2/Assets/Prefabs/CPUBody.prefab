@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 8265650135112083473}
   - component: {fileID: 1949276579664914673}
   - component: {fileID: 1949276579664914672}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CPUBody
-  m_TagString: Player
+  m_TagString: CPU
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,11 +130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f36516821cd2dd41868f0442940fd0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpeed: 75
+  initialSpeed: 125
   xMove: 0
   yMove: -1
-  delay: 0.5
+  delay: 0.1
   delay2: 1
+  rayDistance: 35
 --- !u!114 &1949276579664914672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +161,7 @@ GameObject:
   - component: {fileID: 8265650136127061745}
   - component: {fileID: 8265650136127061744}
   - component: {fileID: 8265650136127061751}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CPUFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +242,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 8265650136127061749}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
