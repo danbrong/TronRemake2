@@ -48,7 +48,7 @@ public class PlayerMove : MonoBehaviour
         
     }
 
-    // Code to Stop Player Movement on Collision
+    // Effects of Collision
     private void OnTriggerEnter(Collider other)
     {
         CPUMove cpMove = cpu.GetComponent<CPUMove>();
@@ -56,8 +56,8 @@ public class PlayerMove : MonoBehaviour
         cpMove.cCollider.enabled = false;
 
         player.SetActive(false);
-        
     }
+
 
     // Player Movement Function
     void Move()
