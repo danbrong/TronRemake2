@@ -6,10 +6,14 @@ public class CPUMove : MonoBehaviour
 {
     // General Variables
     public float initialSpeed;
-    private float speed;
+    public float speed;
     public float xMove = 0;
     public float yMove = -1;
     Rigidbody cbody;
+    public GameObject player;
+    public GameObject cpu;
+    public Collider cCollider;
+
     private float tiltZ;
     bool upReverse = true;
     bool downReverse = false;
@@ -35,6 +39,7 @@ public class CPUMove : MonoBehaviour
     {
         // Find RigidBody on Player Object
         cbody = GetComponent<Rigidbody>();
+        cCollider = GetComponent<Collider>();
 
         // Initial Player Movement
         speed = initialSpeed;
@@ -56,8 +61,11 @@ public class CPUMove : MonoBehaviour
     // Code to Stop Player Movement on Collision
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
-        //speed = 0;
+        PlayerMove playMove = player.GetComponent<PlayerMove>();
+        playMove.speed = 0;
+        playMove.pCollider.enabled = false;
+
+        cpu.SetActive(false);
     }
 
     // Player Movement Function

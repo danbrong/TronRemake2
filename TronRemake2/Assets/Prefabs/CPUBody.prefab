@@ -130,11 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f36516821cd2dd41868f0442940fd0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpeed: 125
+  initialSpeed: 100
   xMove: 0
   yMove: -1
-  delay: 0.1
-  delay2: 1
+  delay: 0.25
+  delay2: 0.75
   rayDistance: 35
 --- !u!114 &1949276579664914672
 MonoBehaviour:
