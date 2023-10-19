@@ -93,7 +93,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 7617915433784131226}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -233,8 +233,13 @@ MonoBehaviour:
   S: 115
   D: 100
   initialSpeed: 100
+  speed: 0
   xMove: 0
   yMove: 1
+  player: {fileID: 7617915434782419044}
+  cpu: {fileID: 0}
+  pCollider: {fileID: 0}
+  loseMsg: {fileID: 0}
 --- !u!114 &7617915434782419068
 MonoBehaviour:
   m_ObjectHideFlags: 0

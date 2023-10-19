@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CPUMove : MonoBehaviour
@@ -34,12 +35,16 @@ public class CPUMove : MonoBehaviour
     private Quaternion rotation = Quaternion.Euler(0, 0, -180);
     private Vector2 zero = Vector2.zero;
 
+    // UI Variables
+    public TextMeshProUGUI winMsg;
+
     // Start is called before the first frame update
     void Start()
     {
         // Find RigidBody on Player Object
         cbody = GetComponent<Rigidbody>();
         cCollider = GetComponent<Collider>();
+        
 
         // Initial Player Movement
         speed = initialSpeed;
@@ -61,10 +66,13 @@ public class CPUMove : MonoBehaviour
     // Code to Stop Player Movement on Collision
     private void OnTriggerEnter(Collider other)
     {
+        GameObject WinMsg = GameObject.Find("HUDWinMsg");
         PlayerMove playMove = player.GetComponent<PlayerMove>();
         playMove.speed = 0;
+        playMove.initialSpeed = 0;
         playMove.pCollider.enabled = false;
 
+        winMsg.enabled = true;
         cpu.SetActive(false);
     }
 

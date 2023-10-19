@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -29,12 +30,16 @@ public class PlayerMove : MonoBehaviour
     private Quaternion rotation = Quaternion.identity;
     private Vector2 zero = Vector2.zero;
 
+    // UI Variables
+    public TextMeshProUGUI loseMsg;
+
     // Start is called before the first frame update
     void Start()
     {
         // Find RigidBody on Player Object
         pbody = GetComponent<Rigidbody>();
         pCollider = GetComponent<Collider>();
+        
 
         // Initial Player Movement
         speed = initialSpeed;
@@ -53,7 +58,10 @@ public class PlayerMove : MonoBehaviour
     {
         CPUMove cpMove = cpu.GetComponent<CPUMove>();
         cpMove.speed = 0;
+        cpMove.initialSpeed = 0;
         cpMove.cCollider.enabled = false;
+
+        loseMsg.enabled = true;
 
         player.SetActive(false);
     }
@@ -74,19 +82,18 @@ public class PlayerMove : MonoBehaviour
             {
                 xMove = 0;
                 yMove = 1;
-                speed = initialSpeed * 2;
+                speed = speed * 2;
             }
             else if (downReverse == false)
             {
                 xMove = 0;
                 yMove = -1;
-                speed = initialSpeed / 2;
+                speed = speed / 2;
             }
             else
             {
                 xMove = 0;
                 yMove = 1;
-                speed = initialSpeed;
                 upReverse = false;
                 downReverse = true;
                 leftReverse = true;
@@ -100,19 +107,18 @@ public class PlayerMove : MonoBehaviour
             {
                 xMove = 0;
                 yMove = -1;
-                speed = initialSpeed * 2;
+                speed = speed * 2;
             }
             else if (upReverse == false)
             {
                 xMove = 0;
                 yMove = 1;
-                speed = initialSpeed / 2;
+                speed = speed / 2;
             }
             else
             {
                 xMove = 0;
                 yMove = -1;
-                speed = initialSpeed;
                 upReverse = true;
                 downReverse = false;
                 leftReverse = true;
@@ -127,19 +133,18 @@ public class PlayerMove : MonoBehaviour
             {
                 xMove = -1;
                 yMove = 0;
-                speed = initialSpeed * 2;
+                speed = speed * 2;
             }
             else if (rightReverse == false)
             {
                 xMove = 1;
                 yMove = 0;
-                speed = initialSpeed / 2;
+                speed = speed / 2;
             }
             else
             {
                 xMove = -1;
                 yMove = 0;
-                speed = initialSpeed;
                 upReverse = true;
                 downReverse = true;
                 leftReverse = false;
@@ -154,19 +159,19 @@ public class PlayerMove : MonoBehaviour
             {
                 xMove = 1;
                 yMove = 0;
-                speed = initialSpeed * 2;
+                speed = speed * 2;
             }
             else if (leftReverse == false)
             {
                 xMove = -1;
                 yMove = 0;
-                speed = initialSpeed / 2;
+                speed = speed / 2;
             }
             else
             {
                 xMove = 1;
                 yMove = 0;
-                speed = initialSpeed;
+                speed = speed;
                 upReverse = true;
                 downReverse = true;
                 leftReverse = true;

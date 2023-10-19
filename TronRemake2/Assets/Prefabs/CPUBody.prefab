@@ -131,11 +131,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialSpeed: 100
+  speed: 0
   xMove: 0
   yMove: -1
-  delay: 0.25
+  player: {fileID: 0}
+  cpu: {fileID: 8265650135112083467}
+  cCollider: {fileID: 0}
+  delay: 0.15
   delay2: 0.75
   rayDistance: 35
+  winMsg: {fileID: 0}
 --- !u!114 &1949276579664914672
 MonoBehaviour:
   m_ObjectHideFlags: 0
